@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع Moumen ZwD الموسيقي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+    <div class="music-notes" id="musicNotes"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-music"></i>
+                <h1>Moumen Music</h1>
+            </div>
+            <div class="creator">تم التطوير بواسطة Moumen ZwD</div>
+        </header>
+        
+        <!-- الصفحة الرئيسية -->
+        <div class="home-page">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن مغنيك المفضل...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <h2 class="fade-in"><i class="fas fa-users"></i> المغنيين</h2>
+            
+            <div class="artists-container" id="artistsContainer">
+                <!-- سيتم إضافة المغنيين هنا عبر الجافاسكريبت -->
+            </div>
+        </div>
+        
+        <!-- صفحة المغني -->
+        <div class="artist-page">
+            <button class="back-btn" id="backToHome"><i class="fas fa-arrow-right"></i> رجوع</button>
+            
+            <div class="artist-header fade-in">
+                <img id="artistPageImg" src="" alt="صورة المغني">
+                <div>
+                    <h2 id="artistPageName"></h2>
+                    <p id="artistSongsCount"></p>
+                </div>
+            </div>
+            
+            <h3 class="fade-in delay-1"><i class="fas fa-list"></i> الأغاني</h3>
+            
+            <div class="songs-list" id="songsList">
+                <!-- سيتم إضافة الأغاني هنا عبر الجافاسكريبت -->
+            </div>
+        </div>
+        
+        <!-- صفحة الفيديو -->
+        <div class="video-page">
+            <button class="back-btn" id="backToArtist"><i class="fas fa-arrow-right"></i> رجوع</button>
+            
+            <div class="video-container fade-in">
+                <video id="musicVideo" controls>
+                    <source src="" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+            </div>
+            
+            <div class="video-info fade-in delay-1">
+                <h3 id="videoTitle"></h3>
+                <p id="videoArtist"></p>
+                <p>تم التطوير بواسطة <span style="color: var(--accent);">Moumen ZwD</span></p>
+            </div>
+        </div>
+        
+        <div class="footer fade-in delay-2">
+            جميع الحقوق محفوظة &copy; 2023 | Moumen Music | تم التطوير بواسطة Moumen ZwD
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
