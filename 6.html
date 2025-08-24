@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحسين محركات البحث (SEO) | Moumen ZwD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6e45e2;
+            --primary-light: #9d8ae9;
+            --secondary: #88d3ce;
+            --seo-color: #17a2b8;
+            --seo-light: #e6f7fa;
+            --dark: #1a1a2e;
+            --dark-light: #2a2a3e;
+            --light: #f8f9fa;
+            --accent: #ff6b6b;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --text: #333;
+            --text-light: #666;
+            --bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* الشريط العلوي */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: rotateY(10deg);
+        }
+
+        .logo i {
+            margin-left: 10px;
+            color: var(--seo-color);
+        }
+
+        .logo span {
+            color: var(--seo-color);
+            position: relative;
+        }
+
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--seo-color));
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover span::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* قسم البطل */
+        .hero {
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-light), var(--seo-color));
+            opacity: 0.1;
+            filter: blur(40px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--seo-color), var(--secondary));
+            opacity: 0.1;
+            filter: blur(40px);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--seo-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transform: translateZ(50px);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-engine {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(10deg);
+        }
+
+        .search-bar {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            transform: translateZ(30px);
+            transition: var(--transition);
+        }
+
+        .search-bar:hover {
+            transform: translateZ(40px) rotateX(0);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-icon {
+            font-size: 1.5rem;
+            color: var(--seo-color);
+            margin-left: 15px;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            font-size: 1.1rem;
+            padding: 10px;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-results {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .result-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: var(--shadow);
+            transform: translateZ(20px);
+            transition: var(--transition);
+        }
+
+        .result-item:hover {
+            transform: translateZ(30px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .result-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .result-url {
+            color: var(--success);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .result-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* قسم الميزات */
+        .features {
+            padding: 80px 0;
+            background: white;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--seo-color));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--seo-color));
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--seo-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transform: translateZ(30px);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* قسم الخدمات */
+        .services {
+            padding: 80px 0;
+            background: var(--seo-light);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateY(-5deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--seo-color);
+            transform: translateZ(30px);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* قسم الإحصائيات */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--seo-color));
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* قسم الاتصال */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-input {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--seo-color);
+            box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-button {
+            background: linear-gradient(135deg, var(--primary), var(--seo-color));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* التذييل */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-logo span {
+            color: var(--seo-color);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--seo-color);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* وسائط الاستجابة */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid, .services-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-engine {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-search"></i>
+                Moumen <span>ZwD</span> SEO
+            </a>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">تحسين محركات البحث (SEO)</h1>
+                <p class="hero-subtitle">ارفع موقعك إلى الصفحة الأولى من نتائج البحث وجذب المزيد من الزوار باستخدام استراتيجيات SEO متقدمة من Moumen ZwD</p>
+                
+                <div class="search-engine">
+                    <div class="search-bar">
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <input type="text" class="search-input" placeholder="كيف يمكنني تحسين موقعي لمحركات البحث...">
+                    </div>
+                </div>
+                
+                <div class="search-results">
+                    <div class="result-item">
+                        <div class="result-title">Moumen ZwD - خدمات تحسين محركات البحث (SEO)</div>
+                        <div class="result-url">https://moumenzwd.com/seo-services</div>
+                        <div class="result-desc">احصل على استراتيجية SEO متكاملة لموقعك لتحسين ظهورك في نتائج البحث وجذب المزيد من العملاء المحتملين.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الميزات -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">لماذا تحسين محركات البحث مهم؟</h2>
+            <p class="section-subtitle">SEO هو استثمار طويل الأمد يساعد موقعك على النمو المستمر وجذب العملاء المناسبين</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">زيادة الزيارات</h3>
+                    <p class="feature-description">ظهورك في الصفحة الأولى يزيد من زيارات موقعك بشكل ملحوظ ويجذب عملاء جدد</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="feature-title">تحسين المبيعات</h3>
+                    <p class="feature-description">الزوار القادمين من محركات البحث أكثر تحويلاً إلى عملاء ومشترين</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">بناء الثقة</h3>
+                    <p class="feature-description">الظهور في النتائج الأولى يزيد من مصداقية موقعك وعلامتك التجارية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">خدمات SEO التي أقدمها</h2>
+            <p class="section-subtitle">مجموعة متكاملة من خدمات تحسين محركات البحث لتحقيق أفضل النتائج</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="service-title">بحث الكلمات المفتاحية</h3>
+                    <p class="service-description">أبحث عن أفضل الكلمات المفتاحية المناسبة لعملك والتي يبحث عنها عملاؤك</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="service-title">تحسين المحتوى</h3>
+                    <p class="service-description">أحسن محتوى موقعك ليكون صديقاً لمحركات البحث وجذاباً للزوار</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">تحسين التقنية</h3>
+                    <p class="service-description">أحسن الجوانب التقنية لموقعك لضمان سهولة الزحف والفهرسة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="service-title">بناء الروابط</h3>
+                    <p class="service-description">أنشئ روابط خلفية عالية الجودة لزيادة سلطة موقعك</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                    <h3 class="service-title">تحليل الأداء</h3>
+                    <p class="service-description">أتابع أداء موقعك وأحلل النتائج لتحسين استراتيجية SEO بشكل مستمر</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">تحسين الجوال</h3>
+                    <p class="service-description">أضمن أن موقعك يعمل بشكل مثالي على جميع الأجهزة المحمولة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الإحصائيات -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">93%</span>
+                    <span class="stat-label">من تجربة الإنترنت تبدأ بمحرك بحث</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-number">75%</span>
+                    <span class="stat-label">من المستخدمين لا يتجاوزون الصفحة الأولى</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">من النقرات تذهب للنتائج الخمسة الأولى</span>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-number">300%</span>
+                    <span class="stat-label">زيادة في الزيارات مع تحسين SEO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2 class="contact-title">احصل على استشارة SEO مجانية</h2>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label class="form-label">الاسم الكامل</label>
+                        <input type="text" class="form-input" placeholder="أدخل اسمك الكامل">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-input" placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">رقم الهاتف</label>
+                        <input type="tel" class="form-input" placeholder="أدخل رقم هاتفك">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">الرسالة</label>
+                        <textarea class="form-input form-textarea" placeholder="أخبرني عن موقعك وأهدافك"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-button">إرسال الطلب</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Moumen <span>ZwD</span> SEO</div>
+                
+                <div class="footer-links">
+                    <a href="#" class="footer-link">الرئيسية</a>
+                    <a href="#" class="footer-link">الخدمات</a>
+                    <a href="#" class="footer-link">المشاريع</a>
+                    <a href="#" class="footer-link">التواصل</a>
+                </div>
+                
+                <p class="copyright">© 2023 Moumen ZwD. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تأثيرات ثلاثية الأبعاد للبطاقات
+        document.querySelectorAll('.feature-card, .service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'none';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease';
+                card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+        
+        // تأثير الكتابة في حقل البحث
+        const searchInput = document.querySelector('.search-input');
+        const texts = [
+            'كيف يمكنني تحسين موقعي لمحركات البحث...',
+            'كيف أظهر في الصفحة الأولى من جوجل...',
+            'كيف أزيد عدد زوار موقعي...',
+            'كيف أحسن ترتيب موقعي في搜索结果...'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                searchInput.placeholder = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                searchInput.placeholder = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(type, 1000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 100);
+            }
+        }
+        
+        // بدء تأثير الكتابة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
